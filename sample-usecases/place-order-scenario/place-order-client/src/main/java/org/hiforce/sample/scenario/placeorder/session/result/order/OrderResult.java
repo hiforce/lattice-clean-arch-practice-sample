@@ -2,6 +2,7 @@ package org.hiforce.sample.scenario.placeorder.session.result.order;
 
 import com.google.common.collect.Lists;
 import lombok.Getter;
+import lombok.Setter;
 import org.hiforce.lattice.sequence.SequenceGenerator;
 import org.hiforce.sample.scenario.placeorder.session.result.promotion.OrderPromotionResult;
 import org.hiforce.sample.scenario.placeorder.session.result.render.OrderRenderResult;
@@ -19,6 +20,10 @@ public class OrderResult implements Serializable {
 
     @Getter
     private final long orderId = SequenceGenerator.next(OrderResult.class.getName());
+
+    @Getter
+    @Setter
+    private String buyerId;
 
     @Getter
     private final List<OrderLineResult> orderLineResults = Lists.newArrayList();

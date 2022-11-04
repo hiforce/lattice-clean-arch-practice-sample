@@ -13,10 +13,10 @@ import org.hiforce.sample.scenario.placeorder.session.result.order.OrderLineResu
 import org.hiforce.sample.scenario.placeorder.session.result.order.OrderResult;
 import org.hiforce.sample.scenario.placeorder.session.scope.PlaceOrderBizSessionScope;
 import org.hiforce.sample.trade.model.dto.BuyItemDTO;
+import org.hiforce.sample.trade.model.dto.OrderDTO;
+import org.hiforce.sample.trade.model.dto.OrderLineDTO;
 import org.hiforce.sample.trade.model.spec.BuyItemSpec;
 import org.hiforce.sample.trade.model.spec.OrderLineSpec;
-import org.hiforce.sample.trade.service.TradeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -43,7 +43,7 @@ public class DefaultPlaceOrderService implements PlaceOrderService {
                 List<RenderOrderProcessor> processors = Lists.newArrayList(
                         new InitOrderLineProcessor()
                 );
-                ShoppingResult shoppingResult = initShoppingResult(orderLineSpecs);
+                ShoppingResult shoppingResult = initShoppingResult(reqDTO, orderLineSpecs);
                 processors.forEach(p -> p.process(shoppingResult, orderLineSpecs));
                 return shoppingResult;
             }
@@ -53,14 +53,44 @@ public class DefaultPlaceOrderService implements PlaceOrderService {
         return buildRenderOrderRespDTO(result);
     }
 
+    @Override
+    public CreateOrderRespDTO createOrder(CreateOrderReqDTO reqDTO) {
+        return null;
+    }
+
     private RenderOrderRespDTO buildRenderOrderRespDTO(ShoppingResult result) {
         RenderOrderRespDTO respDTO = new RenderOrderRespDTO();
+        respDTO.setSuccess(true);
+        respDTO.getOrders().addAll(result.getOrderResults().stream().map(this::buildOrderDTO)
+                .collect(Collectors.toList()));
         return respDTO;
     }
 
-    private ShoppingResult initShoppingResult(List<OrderLineSpec> orderLineSpecs) {
+    private OrderDTO buildOrderDTO(OrderResult orderResult) {
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setBuyerId(orderResult.getBuyerId());
+        orderDTO.setOrderId(orderResult.getOrderId());
+        orderDTO.getOrderLines().addAll(orderResult.getOrderLineResults().stream()
+                .map(this::buildOrderLineDTO).collect(Collectors.toList()));
+        return orderDTO;
+    }
+
+    private OrderLineDTO buildOrderLineDTO(OrderLineResult orderLineResult) {
+        OrderLineDTO orderLineDTO = new OrderLineDTO();
+        OrderLineSpec orderLineSpec = orderLineResult.getOrderLineSpec();
+        orderLineDTO.setOrderLineId(orderLineSpec.getOrderLineId());
+        orderLineDTO.setItemId(orderLineSpec.getItem().getItemId());
+        orderLineDTO.setBuyQuantity(orderLineSpec.getItem().getBuyQuantity());
+        orderLineDTO.setUnitPrice(orderLineSpec.getItem().getUnitPrice().longValue());
+        orderLineDTO.getAttributes().putAll(orderLineSpec.getAttributes());
+        orderLineDTO.getItemFeatures().putAll(orderLineSpec.getItem().getFeatures());
+        return orderLineDTO;
+    }
+
+    private ShoppingResult initShoppingResult(RenderOrderReqDTO reqDTO, List<OrderLineSpec> orderLineSpecs) {
         ShoppingResult shoppingResult = new ShoppingResult();
         OrderResult orderResult = new OrderResult();
+        orderResult.setBuyerId(reqDTO.getBuyerId());
         shoppingResult.getOrderResults().add(orderResult);
 
         orderResult.getOrderLineResults().addAll(orderLineSpecs.stream().map(p -> initOrderLineResult(orderResult, p))
@@ -86,10 +116,5 @@ public class DefaultPlaceOrderService implements PlaceOrderService {
         item.getFeatures().putAll(buyItemDTO.getExtraParams());
         item.setUnitPrice(new BigDecimal(10000L));// from db
         return orderLineSpec;
-    }
-
-    @Override
-    public CreateOrderRespDTO createOrder(CreateOrderReqDTO reqDTO) {
-        return null;
     }
 }

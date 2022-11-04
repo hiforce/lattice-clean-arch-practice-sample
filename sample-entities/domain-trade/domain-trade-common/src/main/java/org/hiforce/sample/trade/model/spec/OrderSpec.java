@@ -1,4 +1,4 @@
-package org.hiforce.sample.trade.model.dto;
+package org.hiforce.sample.trade.model.spec;
 
 import com.google.common.collect.Lists;
 import lombok.Getter;
@@ -9,11 +9,11 @@ import java.util.List;
 
 /**
  * @author Rocky Yu
- * @since 2022/11/3
+ * @since 2022/11/4
  */
-public class OrderDTO implements Serializable {
+public class OrderSpec implements Serializable {
 
-    private static final long serialVersionUID = -4169357658226724601L;
+    private static final long serialVersionUID = -8024397337926258042L;
 
     @Getter
     @Setter
@@ -23,7 +23,6 @@ public class OrderDTO implements Serializable {
     @Setter
     private String buyerId;
 
-
     @Getter
-    private final List<OrderLineDTO> orderLines = Lists.newArrayList();
+    private final List<OrderLineSpec> orderLines = Lists.newArrayList();
 }
