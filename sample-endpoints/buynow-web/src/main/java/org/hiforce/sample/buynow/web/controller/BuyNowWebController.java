@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022/11/4
  */
 @RestController
+@SuppressWarnings("all")
 public class BuyNowWebController {
 
     @Autowired
@@ -40,6 +41,18 @@ public class BuyNowWebController {
 
     @RequestMapping("/buy/2")
     public String doBuyItem_2() {
-        return "hello";
+        RenderOrderReqDTO reqDTO = new RenderOrderReqDTO();
+        reqDTO.setBuyerId("rocky");
+        reqDTO.getItems().add(BuyItemDTO.of("2919311334001001", 1));
+        RenderOrderRespDTO respDTO = placeOrderService.renderOrder(reqDTO);
+
+
+        CreateOrderReqDTO createOrderReqDTO = new CreateOrderReqDTO();
+        createOrderReqDTO.setBuyerId(reqDTO.getBuyerId());
+        createOrderReqDTO.getRequestParams().putAll(reqDTO.getRequestParams());
+        createOrderReqDTO.getOrders().addAll(respDTO.getOrders());
+        placeOrderService.createOrder(createOrderReqDTO);
+
+        return JacksonUtils.serializeWithoutException(respDTO);
     }
 }
