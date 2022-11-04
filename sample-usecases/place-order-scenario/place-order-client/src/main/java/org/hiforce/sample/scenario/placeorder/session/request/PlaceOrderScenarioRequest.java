@@ -2,7 +2,7 @@ package org.hiforce.sample.scenario.placeorder.session.request;
 
 import lombok.Getter;
 import org.hiforce.lattice.model.scenario.ScenarioRequest;
-import org.hiforce.sample.scenario.placeorder.model.spec.OrderLineSpec;
+import org.hiforce.sample.trade.model.spec.OrderLineSpec;
 
 /**
  * @author Rocky Yu

@@ -1,24 +1,24 @@
-package org.hiforce.sample.scenario.placeorder.model.spec;
+package org.hiforce.sample.presale.model;
 
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import lombok.Getter;
 import lombok.Setter;
 import org.hiforce.lattice.model.business.BizContext;
 import org.hiforce.lattice.model.business.IBizObject;
-import org.hiforce.lattice.sequence.SequenceGenerator;
 
-import java.io.Serializable;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Rocky Yu
- * @since 2022/11/3
+ * @since 2022/9/28
  */
-public class OrderLineSpec implements IBizObject {
+public class PreSaleOrderLine implements IBizObject {
 
     @Getter
     @Setter
-    private long orderLineId = SequenceGenerator.next(OrderLineSpec.class.getName());
+    private Long orderLineId;
 
     @Getter
     @Setter
@@ -30,24 +30,30 @@ public class OrderLineSpec implements IBizObject {
 
     @Getter
     @Setter
-    private String buyerId;
+    private long itemId;
 
     @Getter
     @Setter
-    private BuyItemSpec item;
+    private long unitPrice;
 
     @Getter
-    private final Map<String, String> requestParams = Maps.newHashMap();
+    private final Set<Integer> tags = Sets.newHashSet();
+
+    @Getter
+    private final Map<String, String> attributes = Maps.newHashMap();
+
+    @Getter
+    @Setter
+    private int buyQuantity;
 
     @Override
     public BizContext getBizContext() {
-
         return new BizContext() {
 
-            private static final long serialVersionUID = 1129296801641509441L;
+            private static final long serialVersionUID = 496274702752229006L;
 
             @Override
-            public Serializable getBizId() {
+            public Long getBizId() {
                 return orderLineId;
             }
 
@@ -62,4 +68,5 @@ public class OrderLineSpec implements IBizObject {
             }
         };
     }
+
 }

@@ -14,5 +14,6 @@
     <modules>
         <module>domain-trade-sdk</module>
         <module>domain-trade-service</module>
+        <module>domain-trade-common</module>
     </modules>
 </project>

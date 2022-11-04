@@ -4,7 +4,7 @@ import org.hiforce.lattice.model.business.Template;
 import org.hiforce.lattice.model.register.BusinessSpec;
 import org.hiforce.lattice.runtime.Lattice;
 import org.hiforce.lattice.runtime.session.BizSessionScope;
-import org.hiforce.sample.scenario.placeorder.model.spec.OrderLineSpec;
+import org.hiforce.sample.trade.model.spec.OrderLineSpec;
 import org.hiforce.sample.scenario.placeorder.session.request.PlaceOrderScenarioRequest;
 
 import java.util.List;

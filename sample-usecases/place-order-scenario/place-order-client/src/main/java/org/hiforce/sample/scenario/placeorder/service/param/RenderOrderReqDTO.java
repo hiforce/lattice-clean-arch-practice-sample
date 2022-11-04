@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.Getter;
 import lombok.Setter;
-import org.hiforce.sample.scenario.placeorder.model.dto.BuyItemDTO;
+import org.hiforce.sample.trade.model.dto.BuyItemDTO;
 
 import java.io.Serializable;
 import java.util.List;

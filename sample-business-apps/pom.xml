@@ -11,5 +11,8 @@
 
     <artifactId>sample-business-apps</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>sample-business-a</module>
+    </modules>
 
 </project>

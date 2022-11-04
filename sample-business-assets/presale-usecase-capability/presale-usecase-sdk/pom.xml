@@ -12,4 +12,10 @@
     <artifactId>presale-usecase-sdk</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>org.hiforce.lattice</groupId>
+            <artifactId>lattice-model</artifactId>
+        </dependency>
+    </dependencies>
 </project>

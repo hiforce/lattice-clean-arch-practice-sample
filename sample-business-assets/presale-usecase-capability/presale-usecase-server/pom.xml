@@ -17,5 +17,19 @@
             <artifactId>presale-usecase-sdk</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hiforce.lattice</groupId>
+            <artifactId>place-order-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hiforce.lattice</groupId>
+            <artifactId>domain-trade-sdk</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hiforce.lattice</groupId>
+            <artifactId>lattice-runtime</artifactId>
+        </dependency>
     </dependencies>
 </project>

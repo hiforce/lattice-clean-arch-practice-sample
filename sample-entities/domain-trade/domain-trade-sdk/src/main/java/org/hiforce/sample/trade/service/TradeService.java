@@ -1,6 +1,10 @@
 package org.hiforce.sample.trade.service;
 
 import org.hiforce.sample.trade.model.TradeOrderDO;
+import org.hiforce.sample.trade.model.dto.OrderDTO;
+import org.hiforce.sample.trade.model.spec.OrderLineSpec;
+
+import java.util.List;
 
 /**
  * @author Rocky Yu
@@ -8,5 +12,7 @@ import org.hiforce.sample.trade.model.TradeOrderDO;
  */
 public interface TradeService {
 
-    TradeOrderDO saveTradeOrder(TradeOrderDO tradeOrderDO);
+    List<OrderLineSpec> initBuildOrderLines(List<OrderLineSpec> originOrderLines);
+
+    TradeOrderDO saveTradeOrder(OrderDTO orderDTO);
 }

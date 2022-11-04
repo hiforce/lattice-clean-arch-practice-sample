@@ -34,6 +34,14 @@ public class OrderLineDO implements IBizObject, Serializable {
     private String scenario;
 
     @Getter
+    @Setter
+    private int buyQuantity;
+
+    @Getter
+    @Setter
+    private long unitPrice;
+
+    @Getter
     private final Map<String, String> attributes = Maps.newHashMap();
 
     @Override

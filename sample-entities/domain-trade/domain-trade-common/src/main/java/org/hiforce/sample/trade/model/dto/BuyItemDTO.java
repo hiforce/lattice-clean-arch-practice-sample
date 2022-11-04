@@ -1,4 +1,4 @@
-package org.hiforce.sample.scenario.placeorder.model.dto;
+package org.hiforce.sample.trade.model.dto;
 
 import com.google.common.collect.Maps;
 import lombok.Getter;
@@ -23,14 +23,14 @@ public class BuyItemDTO implements Serializable {
     @Setter
     private int buyQuantity;
 
-    @Getter
-    @Setter
-    private String memo;
-
-    @Getter
-    @Setter
-    private String source;
 
     @Getter
     private final Map<String, String> extraParams = Maps.newHashMap();
+
+    public static BuyItemDTO of(String itemId, int buyQuantity) {
+        BuyItemDTO dto = new BuyItemDTO();
+        dto.setItemId(itemId);
+        dto.setBuyQuantity(buyQuantity);
+        return dto;
+    }
 }

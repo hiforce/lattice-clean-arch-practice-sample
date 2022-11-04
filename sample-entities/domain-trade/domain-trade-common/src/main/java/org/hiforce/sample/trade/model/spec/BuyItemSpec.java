@@ -1,10 +1,11 @@
-package org.hiforce.sample.scenario.placeorder.model.spec;
+package org.hiforce.sample.trade.model.spec;
 
 import com.google.common.collect.Maps;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Map;
 
 /**
@@ -22,6 +23,10 @@ public class BuyItemSpec implements Serializable {
     @Getter
     @Setter
     private int buyQuantity;
+
+    @Getter
+    @Setter
+    private BigDecimal unitPrice;
 
     @Getter
     private final Map<String, String> features = Maps.newHashMap();

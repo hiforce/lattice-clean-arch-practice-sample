@@ -16,5 +16,10 @@
             <groupId>org.hiforce.lattice</groupId>
             <artifactId>lattice-model</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.hiforce.lattice</groupId>
+            <artifactId>domain-trade-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>

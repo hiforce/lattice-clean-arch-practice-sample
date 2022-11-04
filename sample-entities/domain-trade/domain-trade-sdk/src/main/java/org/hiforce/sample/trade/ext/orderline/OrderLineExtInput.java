@@ -2,7 +2,7 @@ package org.hiforce.sample.trade.ext.orderline;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hiforce.sample.trade.model.OrderLineDO;
+import org.hiforce.sample.trade.model.spec.OrderLineSpec;
 
 import java.io.Serializable;
 
@@ -16,9 +16,9 @@ public abstract class OrderLineExtInput implements Serializable {
 
     @Getter
     @Setter
-    private OrderLineDO orderLine;
+    private OrderLineSpec orderLine;
 
-    public OrderLineExtInput(OrderLineDO orderLine) {
+    public OrderLineExtInput(OrderLineSpec orderLine) {
         this.orderLine = orderLine;
     }
 }
