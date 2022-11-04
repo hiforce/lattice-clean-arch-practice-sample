@@ -1,24 +1,29 @@
-package org.hiforce.sample.scenario.placeorder.model.spec;
+package org.hiforce.sample.trade.model;
 
 import com.google.common.collect.Maps;
 import lombok.Getter;
 import lombok.Setter;
 import org.hiforce.lattice.model.business.BizContext;
 import org.hiforce.lattice.model.business.IBizObject;
-import org.hiforce.lattice.sequence.SequenceGenerator;
 
 import java.io.Serializable;
 import java.util.Map;
 
 /**
  * @author Rocky Yu
- * @since 2022/11/3
+ * @since 2022/11/4
  */
-public class OrderLineSpec implements IBizObject {
+public class OrderLineDO implements IBizObject, Serializable {
+
+    private static final long serialVersionUID = -8984577494569729211L;
 
     @Getter
     @Setter
-    private long orderLineId = SequenceGenerator.next(OrderLineSpec.class.getName());
+    private long id;
+
+    @Getter
+    @Setter
+    private long orderLineId;
 
     @Getter
     @Setter
@@ -29,22 +34,14 @@ public class OrderLineSpec implements IBizObject {
     private String scenario;
 
     @Getter
-    @Setter
-    private String buyerId;
-
-    @Getter
-    @Setter
-    private BuyItemSpec item;
-
-    @Getter
-    private final Map<String, String> requestParams = Maps.newHashMap();
+    private final Map<String, String> attributes = Maps.newHashMap();
 
     @Override
     public BizContext getBizContext() {
 
         return new BizContext() {
 
-            private static final long serialVersionUID = 1129296801641509441L;
+            private static final long serialVersionUID = 2931606663500131639L;
 
             @Override
             public Serializable getBizId() {

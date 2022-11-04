@@ -1,9 +1,11 @@
 package org.hiforce.sample.scenario.placeorder.session.scope;
 
+import org.hiforce.lattice.model.business.Template;
+import org.hiforce.lattice.model.register.BusinessSpec;
+import org.hiforce.lattice.runtime.Lattice;
 import org.hiforce.lattice.runtime.session.BizSessionScope;
 import org.hiforce.sample.scenario.placeorder.model.spec.OrderLineSpec;
 import org.hiforce.sample.scenario.placeorder.session.request.PlaceOrderScenarioRequest;
-import org.hiforce.sample.scenario.placeorder.session.result.ShoppingResult;
 
 import java.util.List;
 
@@ -11,7 +13,7 @@ import java.util.List;
  * @author Rocky Yu
  * @since 2022/11/3
  */
-public abstract class PlaceOrderBizSessionScope extends BizSessionScope<ShoppingResult, OrderLineSpec> {
+public abstract class PlaceOrderBizSessionScope<Resp> extends BizSessionScope<Resp, OrderLineSpec> {
 
     public PlaceOrderBizSessionScope(OrderLineSpec orderLineSpec) {
         super(orderLineSpec);
@@ -23,6 +25,13 @@ public abstract class PlaceOrderBizSessionScope extends BizSessionScope<Shopping
 
     @Override
     public PlaceOrderScenarioRequest buildScenarioRequest(OrderLineSpec orderLineSpec) {
-        return new PlaceOrderScenarioRequest(orderLineSpec);
+        PlaceOrderScenarioRequest request = new PlaceOrderScenarioRequest(orderLineSpec);
+        orderLineSpec.setBizCode(Lattice.getInstance().getAllRegisteredBusinesses()
+                .stream()
+                .map(BusinessSpec::newInstance)
+                .filter(p -> p.isEffect(request))
+                .map(Template::getCode)
+                .findFirst().orElse(null));
+        return request;
     }
 }

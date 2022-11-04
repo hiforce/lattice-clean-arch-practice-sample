@@ -12,7 +12,7 @@
     <artifactId>sample-entities</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>domain-order</module>
+        <module>domain-trade</module>
     </modules>
 
 </project>
