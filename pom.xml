@@ -24,7 +24,6 @@
         <module>sample-entities</module>
         <module>sample-usecases</module>
         <module>sample-endpoints</module>
-        <module>sample-business-assets</module>
         <module>sample-business-apps</module>
     </modules>
 

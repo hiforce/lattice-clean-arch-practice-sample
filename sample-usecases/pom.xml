@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>place-order-scenario</module>
+        <module>usecase-assets</module>
     </modules>
 
 </project>
