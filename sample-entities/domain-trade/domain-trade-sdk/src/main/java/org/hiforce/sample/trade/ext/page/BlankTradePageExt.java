@@ -1,5 +1,6 @@
 package org.hiforce.sample.trade.ext.page;
 
+import org.hiforce.lattice.annotation.Schema;
 import org.hiforce.lattice.model.ability.BusinessExt;
 import org.hiforce.sample.trade.ext.page.buynow.BlankTradeBuyNowPageExt;
 import org.hiforce.sample.trade.ext.page.cart.BlankTradeCartPageExt;
@@ -8,6 +9,7 @@ import org.hiforce.sample.trade.ext.page.cart.BlankTradeCartPageExt;
  * @author Rocky Yu
  * @since 2022/11/4
  */
+@Schema(root = true)
 public class BlankTradePageExt extends BusinessExt implements TradePageExt {
 
     @Override

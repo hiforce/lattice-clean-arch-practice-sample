@@ -1,6 +1,7 @@
 package org.hiforce.sample.business.realization.presale;
 
 import org.hiforce.lattice.annotation.Realization;
+import org.hiforce.lattice.annotation.Schema;
 import org.hiforce.sample.business.SampleBusinessA;
 import org.hiforce.sample.presale.BlankPreSaleTradeExt;
 import org.hiforce.sample.presale.model.PreSaleOrderLine;

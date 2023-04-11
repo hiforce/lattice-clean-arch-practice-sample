@@ -1,5 +1,6 @@
 package org.hiforce.sample.presale;
 
+import org.hiforce.lattice.annotation.Schema;
 import org.hiforce.lattice.model.ability.BusinessExt;
 import org.hiforce.sample.presale.scenario.fulfillment.BlankPreSaleFulfillmentExt;
 import org.hiforce.sample.presale.scenario.place.BlankPreSalePlaceOrderExt;
@@ -9,6 +10,7 @@ import org.hiforce.sample.presale.scenario.refund.BlankPreSaleRefundExt;
  * @author Rocky Yu
  * @since 2022/11/4
  */
+@Schema(root = true)
 public class BlankPreSaleTradeExt extends BusinessExt implements PreSaleTradeExt {
     @Override
     public BlankPreSalePlaceOrderExt getPreSalePlaceOrderExt() {
