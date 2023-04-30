@@ -4,32 +4,13 @@
   "products": [
     {
       "code": "SampleProductA"
-    },
-    {
-      "code": "PreSaleUseCaseCapability"
     }
   ],
   "extensions": [
-    {
-      "extCode": "EXT_DOMAIN_ORDER_CUSTOM_UNIT_PRICE",
-      "priorities": [
-        {
-          "code": "PreSaleUseCaseCapability",
-          "type": "PRODUCT"
-        },
-        {
-          "code": "SampleBusinessA",
-          "type": "BUSINESS"
-        }
-      ]
-    },
+
     {
       "extCode": "EXT_DOMAIN_TRADE_ORDER_ATTRIBUTES",
       "priorities": [
-        {
-          "code": "PreSaleUseCaseCapability",
-          "type": "PRODUCT"
-        },
         {
           "code": "SampleBusinessA",
           "type": "BUSINESS"
