@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class LatticeInitConfig implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
-        Lattice.getInstance().setSimpleMode(true);//no business config file, simple mode.
+//        Lattice.getInstance().setSimpleMode(true);//no business config file, simple mode.
         Lattice.getInstance().start();
         System.out.println(">>> Lattice started!");
     }

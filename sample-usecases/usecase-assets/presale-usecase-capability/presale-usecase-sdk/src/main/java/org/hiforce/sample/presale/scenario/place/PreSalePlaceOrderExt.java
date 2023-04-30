@@ -12,6 +12,7 @@ import static org.hiforce.lattice.annotation.model.ReduceType.FIRST;
  */
 public interface PreSalePlaceOrderExt extends IBusinessExt {
 
-    @Extension(name = "Custom PreSale Down Payment Ratio", reduceType = FIRST)
+    String EXT_PRE_SALE_CUSTOM_PAYMENT_RATIO = "EXT_PRE_SALE_CUSTOM_PAYMENT_RATIO";
+    @Extension(code = "EXT_PRE_SALE_CUSTOM_PAYMENT_RATIO", name = "Custom PreSale Down Payment Ratio", reduceType = FIRST)
     Double getCustomDownPaymentRatio(PreSaleOrderLine orderLine);
 }

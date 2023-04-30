@@ -24,6 +24,7 @@
         <module>sample-usecases</module>
         <module>sample-endpoints</module>
         <module>sample-business-apps</module>
+        <module>sample-products</module>
     </modules>
 
     <dependencyManagement>
@@ -53,6 +54,11 @@
             <dependency>
                 <groupId>org.hiforce.lattice</groupId>
                 <artifactId>lattice-runtime</artifactId>
+                <version>${version.lattice}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hiforce.lattice</groupId>
+                <artifactId>lattice-load-config-res</artifactId>
                 <version>${version.lattice}</version>
             </dependency>
         </dependencies>

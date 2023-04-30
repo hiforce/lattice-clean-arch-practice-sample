@@ -13,6 +13,7 @@ import java.math.BigDecimal;
  */
 public interface TradeOrderLineInitExt extends IBusinessExt {
 
-    @Extension(reduceType = ReduceType.FIRST)
+    String EXT_DOMAIN_ORDER_CUSTOM_UNIT_PRICE = "EXT_DOMAIN_ORDER_CUSTOM_UNIT_PRICE";
+    @Extension(reduceType = ReduceType.FIRST, code = "EXT_DOMAIN_ORDER_CUSTOM_UNIT_PRICE")
     BigDecimal getCustomUnitPrice(InitOrderLineExtInput input);
 }

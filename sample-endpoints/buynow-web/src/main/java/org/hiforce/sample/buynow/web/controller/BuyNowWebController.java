@@ -44,6 +44,25 @@ public class BuyNowWebController {
         RenderOrderReqDTO reqDTO = new RenderOrderReqDTO();
         reqDTO.setBuyerId("rocky");
         reqDTO.getItems().add(BuyItemDTO.of("2919311334001001", 1));
+        reqDTO.getRequestParams().put("presale_open", "1");
+        reqDTO.getRequestParams().put("product_a", "1");
+        RenderOrderRespDTO respDTO = placeOrderService.renderOrder(reqDTO);
+
+
+        CreateOrderReqDTO createOrderReqDTO = new CreateOrderReqDTO();
+        createOrderReqDTO.setBuyerId(reqDTO.getBuyerId());
+        createOrderReqDTO.getRequestParams().putAll(reqDTO.getRequestParams());
+        createOrderReqDTO.getOrders().addAll(respDTO.getOrders());
+        placeOrderService.createOrder(createOrderReqDTO);
+
+        return JacksonUtils.serializeWithoutException(respDTO);
+    }
+
+    @RequestMapping("/buy/3")
+    public String doBuyItem_3() {
+        RenderOrderReqDTO reqDTO = new RenderOrderReqDTO();
+        reqDTO.setBuyerId("rocky");
+        reqDTO.getItems().add(BuyItemDTO.of("2919311334001001", 1));
         RenderOrderRespDTO respDTO = placeOrderService.renderOrder(reqDTO);
 
 

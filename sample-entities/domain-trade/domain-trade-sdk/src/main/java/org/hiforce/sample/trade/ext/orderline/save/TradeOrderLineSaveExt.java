@@ -13,7 +13,8 @@ import java.util.Map;
  */
 public interface TradeOrderLineSaveExt extends IBusinessExt {
 
-    @Extension(reduceType = ReduceType.NONE)
+    String EXT_DOMAIN_TRADE_ORDER_ATTRIBUTES = "EXT_DOMAIN_TRADE_ORDER_ATTRIBUTES";
+    @Extension(reduceType = ReduceType.NONE, code = "EXT_DOMAIN_TRADE_ORDER_ATTRIBUTES")
     Map<String, String> getCustomOrderLineAttributes(SaveOrderLineExtInput input);
 
     @Extension(reduceType = ReduceType.NONE)
